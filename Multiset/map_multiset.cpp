@@ -23,28 +23,69 @@ typedef vector<LL>vll;
 
 int main()
 {
-    multiset<int>mset;
-    multiset<int>::iterator it;
+    map<int , multiset<int> >mmset;
+   multiset<int>::iterator it;
+   multiset<int>::iterator it1;
+   int ar[10];
     while(true)
     {
-        mset.clear();
-
-        for(int i=1; i<=5; i++)
+        for(int i=0; i<6; i++)
         {
             int x;
             cin >> x;
-            mset.insert(x);
+            ar[i] = x;
+
+            mmset[ar[i] % 10].insert(ar[i]);
         }
 
-        //cout << mset.find(40);
-//        it = mset.find(50);
-//        mset.insert(it , 100); // 50 er pore 100 bosabe
+        for(int i=0; i<6; i++)
+        {
+            it = mmset[ar[i] % 10].find(ar[i]);
 
-        it = mset.find(50); //cout << *it << "\n";
+            it1 = mmset[ar[i] %10].end();
 
-        mset.erase(it);
-
-        for(it=mset.begin() ; it != mset.end() ; ++it) cout << *it << " ";
-        cout << "\n" << mset.size() << "\n";
+            cout << *it << " " << *it1 << "; ";
+        }
     }
 }
+
+
+//int main()
+//{
+//    map<int, int>mpii;
+//    multiset<int>mset;
+//    multiset<int>::iterator mit;
+//    set<int>st;
+//    set<int>::iterator it;
+//    while(true)
+//    {
+//        mpii.clear();
+//        st.clear();
+//        mset.clear();
+//
+//        for(int i=0; i<5; i++)
+//        {
+//            int x;
+//            cin >> x;
+//
+//            if(mpii.count(x) == 0)
+//            {
+//                st.insert(x);
+//                mpii[x]= 1;
+//                mset.insert(x);
+//            }
+//
+//            else mset.insert(x);
+//        }
+//
+//        for(it=st.begin(); it!=st.end(); it++)
+//        {
+//            cout << *it << " appears " << mset.count(*it);
+//
+//            if(mset.count(*it > 1)) cout << " times\n";
+//            else cout << " time\n";
+//        }
+//    }
+//
+//    return 0;
+//}
